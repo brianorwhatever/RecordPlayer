@@ -1,0 +1,26 @@
+{
+  "name": "mcaxiom-record-player",
+  "version": "1.0.0",
+  "description": "record player app for mcaxiom built off of a codrops demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianorwhatever/RecordPlayer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brianorwhatever/RecordPlayer/issues"
+  },
+  "homepage": "https://github.com/brianorwhatever/RecordPlayer#readme",
+  "devDependencies": {
+    "co-views": "^2.1.0",
+    "koa": "^1.2.0",
+    "koa-static": "^2.0.0",
+    "swig": "^1.4.2"
+  }
+}
