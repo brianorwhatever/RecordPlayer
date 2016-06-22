@@ -400,7 +400,7 @@
 			self.canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
 			self.canvasCtx.lineWidth = 1;
-			self.canvasCtx.strokeStyle = '#474283';
+			self.canvasCtx.strokeStyle = '#F0E48E';
 
 			self.canvasCtx.beginPath();
 
@@ -1376,10 +1376,10 @@
 	}
 
 	function showExpander(position, callback) {
-		dynamics.css(expanderEl, { opacity: 1, left : position.x, top : position.y, backgroundColor : '#45918e', scale : 0 });
+		dynamics.css(expanderEl, { opacity: 1, left : position.x, top : position.y, backgroundColor : '#F0E48E', scale : 0 });
 		dynamics.animate(expanderEl, { 
 			scale : 1.5, 
-			backgroundColor : '#45cb96' 
+			backgroundColor : '#041122' 
 		}, { 
 			duration : 500, 
 			type : dynamics.easeOut,

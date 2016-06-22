@@ -23,8 +23,8 @@
 body {
 	font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, 'Bitstream Vera Sans Mono', monospace;
 	overflow-x: hidden;
-	color: #474283;
-	background: #45cb96;
+	color: #F0E48E;
+	background: #041122;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -152,7 +152,7 @@ html.js,
 	left: 50%;
 	width: 1px;
 	height: 100%;
-	background: #474283;
+	background: #F0E48E;
 	-webkit-transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
 	transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
 }
@@ -197,7 +197,7 @@ html.js,
 	height: 80px;
 	margin: 0 0 0 -40px;
 	border: 10px solid rgba(255, 255, 255, 0.8);
-	border-bottom-color: #474283;
+	border-bottom-color: #F0E48E;
 	border-radius: 50%;
 	-webkit-animation: spinLoader 1s linear infinite forwards;
 	animation: spinLoader 1s linear infinite forwards;
@@ -303,13 +303,13 @@ html.js,
 .grid__link {
 	position: relative;
 	display: block;
-	color: #474283;
+	color: #F0E48E;
 	-webkit-perspective: 1200px;
 	perspective: 1200px;
 }
 
 .grid__link:hover {
-	color: #474283;
+	color: #F0E48E;
 	outline: none;
 }
 
@@ -363,7 +363,7 @@ html.js,
 	font-size: 1em;
 	font-weight: bold;
 	margin: 0 0 0 3em;
-	white-space: nowrap;
+	width: 250px;
 }
 
 .year {
@@ -373,7 +373,7 @@ html.js,
 	right: 0;
 	margin: -1em -1em 0 0;
 	padding: 0.3em 0.5em;
-	color: #fff;
+	color: #F0E48E;
 	border: 2px solid;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
@@ -661,7 +661,7 @@ html.js,
 
 .icon--progress path {
 	fill: none;
-	stroke: #474283;
+	stroke: #F0E48E;
 	stroke-width: 8px;
 }
 
@@ -956,11 +956,11 @@ we use margins because transforms will be applied dynamically */
 	color: #fff;
 	border: 0;
 	border-radius: 50%;
-	background: #474283;
+	background: #F0E48E;
 }
 
 .player-button:hover {
-	color: #474283;
+	color: #F0E48E;
 	background: rgba(255, 255, 255, 0.9);
 }
 
@@ -1008,7 +1008,7 @@ we use margins because transforms will be applied dynamically */
 }
 
 .effects__button--active {
-	color: #474283;
+	color: #F0E48E;
 }
 
 .effects__button:focus {
