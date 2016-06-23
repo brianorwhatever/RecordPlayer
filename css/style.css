@@ -32,7 +32,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #349770; }
+  color: #F0E48E; }
 
 /* Icons */
 .icon {
@@ -95,7 +95,7 @@ html.js,
 
 .page-header__title {
   font-family: 'nexa_boldregular', sans-serif;
-  font-size: 7vmin;
+  font-size: 5em;
   line-height: 1.25;
   margin: 0;
   padding: 0 0 0 1.65em;
@@ -139,7 +139,7 @@ html.js,
   .page-header {
     padding: 2em; }
   .page-header__title {
-    font-size: 8vmin; }
+    font-size: 16vmin; }
   .page-header__subtitle {
     max-width: none; } }
 
@@ -289,8 +289,10 @@ html.js,
 .title {
   font-size: 1em;
   font-weight: bold;
-  margin: 0 0 0 3em;
-  width: 270px; }
+  margin: 0 0 0 1.5em;
+  width: 300px; }
+  .title.small {
+    width: 255px; }
 
 .year {
   font-size: 0.85em;
@@ -299,8 +301,8 @@ html.js,
   right: 0;
   margin: -1em -1em 0 0;
   padding: 0.3em 0.5em;
-  color: #041122;
-  border: 2px solid;
+  color: #F0E48E;
+  background-color: #041122;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
 
@@ -601,7 +603,7 @@ html.js,
   width: calc(90vmin + (0.2 * 80vmin));
   height: 90vmin;
   border-radius: 0.15em;
-  background: #45bd94;
+  background: #9f9f9f;
   -webkit-transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
   transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
   pointer-events: none; }
@@ -612,7 +614,9 @@ html.js,
   right: 4vmin;
   width: 185px;
   height: 25px;
-  border: 1px solid; }
+  border: 1px solid;
+  background-color: #F0E48E;
+  color: #474283; }
 
 .song {
   font-size: 0.7em;
@@ -811,7 +815,7 @@ we use margins because transforms will be applied dynamically */
 .effects__irs {
   margin: 0.5em 0 0;
   padding: 1em 0 0;
-  border-top: 1px solid #379676; }
+  border-top: 1px solid #9f9f9f; }
 
 .effects__button {
   display: block;
@@ -822,13 +826,13 @@ we use margins because transforms will be applied dynamically */
   height: 4em;
   margin: 0.5em 0;
   padding: 1em;
-  color: #37a07c;
+  color: #9f9f9f;
   border: 0;
   background: none;
   -webkit-box-flex: 0; }
 
 .effects__button--active {
-  color: #041122; }
+  color: #474283; }
 
 .effects__button:focus {
   outline: none; }

@@ -4,7 +4,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2016, Codrops
  * http://www.codrops.com
  */
@@ -14,7 +14,7 @@
 
 	// Helper vars and functions.
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}
@@ -71,7 +71,7 @@
 
 		/* 'point 2' is the point where the line through the circle
 		 * intersection points crosses the line between the circle
-		 * centers.  
+		 * centers.
 		 */
 
 		/* Determine the distance from point 0 to point 2. */
@@ -129,12 +129,12 @@
 		this.armRotation = 0;
 		// Audio context destination / output.
 		this.speakers = this.audioCtx.destination;
-		// Room effect idx (for the web audio convolver). 
+		// Room effect idx (for the web audio convolver).
 		// All the effects available should be in the options.effectBuffers array.
 		this.effect = -1; // None by default.
 		// Create convolver for the room effects.
 		this.convolver = this.audioCtx.createConvolver();
-		
+
 		// UI stuff.
 		this.ui = {
 			player : this.el.querySelector('.player__element--lp'),
@@ -171,7 +171,7 @@
 
 		// Create the audio analyser and the canvas element to visualize the waveform.
 		this._createAnalyser();
-		
+
 		// Init/Bind events.
 		this._initEvents();
 	}
@@ -243,7 +243,7 @@
 				for(var i = 0; i < _side.totalBuffers; ++i) {
 					_side.totalDuration += _side.bufferList['buffer' + (i+1)].duration;
 				}
-				
+
 				++sidesLoaded;
 
 				if( sidesLoaded === 2 ) {
@@ -277,12 +277,12 @@
 			self.recordData[side].bufferNames = arr;
 			return arr;
 		};
-		
+
 		loadAssetsSide('side1', buildAssetsList('side1'), function() {
 			loadAssetsSide('side2', buildAssetsList('side2'));
 		});
 	};
-	
+
 	/**
 	 * Starts the turntable and starts playing the record.
 	 */
@@ -317,8 +317,8 @@
 		this.infoElems.song.innerHTML = this._getSongName(this._getCurrentSide().bufferNames[0]['buffer' + this.currentBuffer]);
 		// Set up the room effect and the right audio nodes´ connections.
 		this.setEffect();
-		// Start playing the current buffer. 
-		// If bufferOffset is passed then start playing it from then on. 
+		// Start playing the current buffer.
+		// If bufferOffset is passed then start playing it from then on.
 		// Also, if starting from the beginning add a delay of [bufferDelay] seconds before playing the track.
 		this.source.start(bufferOffset && bufferOffset > 0 ? this.audioCtx.currentTime : this.audioCtx.currentTime + this.bufferDelay, bufferOffset ? bufferOffset : 0);
 		// start analysing
@@ -329,7 +329,7 @@
 		this.analyserTimeout = setTimeout(function() { self._analyse(); }, bufferOffset && bufferOffset > 0 ? 0 : this.bufferDelay*1000);
 		// When the current buffer ends playing, jump to the next buffer in the list.
 		var self = this;
-		
+
 		this.sourceEnded = function() {
 			// If isDragging is true it means the User lifted the tonearm.
 			if( self.isDragging ) return;
@@ -361,7 +361,7 @@
 	 */
 	Turntable.prototype._createAnalyser = function() {
 		this.analyser = this.audioCtx.createAnalyser();
-		
+
 		// set up canvas context for visualizer
 		this.canvas = document.createElement('canvas');
 		this.ui.visualizer.appendChild(this.canvas);
@@ -376,7 +376,7 @@
 
 	/**
 	 * Shows the waveform/oscilloscope.
-	 * based on : 
+	 * based on :
 	 * https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js#L123-L167
 	 * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
 	 */
@@ -391,16 +391,16 @@
   			self = this;
 
 		this.canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-		
+
 		var draw = function() {
 			self.drawVisual = requestAnimationFrame(draw);
 			self.analyser.getByteTimeDomainData(dataArray);
 
-			self.canvasCtx.fillStyle = '#45bd94';
+			self.canvasCtx.fillStyle = '#F0E48E';
 			self.canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
 			self.canvasCtx.lineWidth = 1;
-			self.canvasCtx.strokeStyle = '#F0E48E';
+			self.canvasCtx.strokeStyle = '#474283';
 
 			self.canvasCtx.beginPath();
 
@@ -436,7 +436,7 @@
 
 	/**
 	 * Turns on everything else: tonearm rotation, platter rotation and noise/scratch sound.
-	 * @param Number status: 
+	 * @param Number status:
 	 * none || 1 - start all: creates and plays the noise; moves arm to platter; starts the arm rotation; starts the platter rotation.
 	 * 2 - turntable is already on and running but tone arm is lifted, so: creates and plays the noise; starts the arm rotation for the @param remainingTime.
 	 */
@@ -446,7 +446,7 @@
 		this._createNoise();
 		// Play it
 		this._playNoise();
-		
+
 		if( status === 1 ) {
 			// Moves the arm to the platter.
 			this._moveArmTo(1);
@@ -465,7 +465,7 @@
 			}, remainingTime === this.totalDuration ? this.bufferDelay * 1000 : 0);
 		}
 	};
-	
+
 	/**
 	 * Stops playing. If the User is not dragging the tonearm it turns of any other extra (arm and platter rotation and noise effect).
 	 */
@@ -485,7 +485,7 @@
 		this._stopAnalysing();
 		// stop the animation of the arm.
 		dynamics.stop(this.ui.arm);
-		// If the action causing it to stop was the User lifting up the tonearm, then the tonearm stays where it was and the platter continues to rotate. 
+		// If the action causing it to stop was the User lifting up the tonearm, then the tonearm stays where it was and the platter continues to rotate.
 		// Otherwise the tonearm moves back to its resting position and the platter stops rotating.
 		if( !this.isDragging ) {
 			this._moveArmTo(0);
@@ -530,7 +530,7 @@
 			prevDurations = 0,
 			bufferOffset = -1,
 			offsetDuration = this.armRotation * this._getCurrentSide().totalDuration / (this.angleInterval.max - this.angleInterval.min) - (this.angleInterval.min * this._getCurrentSide().totalDuration / (this.angleInterval.max - this.angleInterval.min));
-		
+
 		for(var i = 0; i < this._getCurrentSide().totalBuffers; ++i) {
 			durations += this._getCurrentSide().bufferList['buffer' + (i+1)].duration;
 			if( offsetDuration < durations ) {
@@ -604,7 +604,7 @@
 		this.effect = idx != undefined ? idx : this.effect;
 
 		if( !this.source ) { return; }
-		
+
 		if( this.effect === -1 ) { // No effect.
 			// readjust the nodes´ connections.
 			this.source.disconnect();
@@ -629,7 +629,7 @@
 	Turntable.prototype._getAngle = function(el1) {
 		var el1Offset = el1.getBoundingClientRect(),
 			armOffset = this.ui.arm.getBoundingClientRect(),
-			
+
 			// radius and center points of both circles
 			r1 = el1Offset.width/2,
 			x1 = el1Offset.left + el1Offset.width/2,
@@ -643,7 +643,7 @@
 
 			// angle
 			deg = Math.atan2(this.armCenterPoint.y - intersection.y,this.armCenterPoint.x - intersection.x)*180/Math.PI;
-		
+
 		// since the cartridge is rotated we need to take this in consideration when rotating the arm
 		return deg + 90 - this.cartridgeMargin;
 	};
@@ -718,12 +718,12 @@
 	 */
 	Turntable.prototype._initEvents = function() {
 		// Dragging functionality based on http://tutorialzine.com/2011/11/pretty-switches-css3-jquery/
-		var self = this, 
+		var self = this,
 			startDeg = -1, currentDeg = 0, rad2deg = 180/Math.PI;
 
 		// Mousedown event.
 		this.startDragging = function() {
-			// Start dragging. 
+			// Start dragging.
 			self.isDragging = true;
 			// Current rotation.
 			currentDeg = self.armRotation ? self.armRotation : currentDeg;
@@ -753,7 +753,7 @@
 				tmp = self.angleInterval.max;
 			}
 			currentDeg = tmp;
-			
+
 			// update the tonearm rotation value
 			dynamics.css(self.ui.arm, { rotateZ : currentDeg });
 		};
@@ -783,7 +783,7 @@
 			// Recalculate arm center point.
 			var armOffset = self.ui.arm.getBoundingClientRect();
 			self.armCenterPoint = { x: armOffset.left + armOffset.width/2, y : armOffset.top + armOffset.height/2 };
-			
+
 			// Recalculate angle interval.
 			self.angleInterval = {
 				min : self._getAngle(self.ui.player),
@@ -815,7 +815,7 @@
 			else {
 				self._ctrlPlay('play');
 				self.start();
-			}			
+			}
 		});
 
 		// Vinyl fx.
@@ -848,7 +848,7 @@
 	};
 
 	/**
-	 * User clicks the back button on the Turntable view. 
+	 * User clicks the back button on the Turntable view.
 	 * Turntable stops.
 	 */
 	Turntable.prototype._ctrlBack = function() {
@@ -858,7 +858,7 @@
 		this.options.onGoBack();
 		// Reset side / Show side A.
 		if( classie.has(this.ui.player, 'player__element--lp-flip') ) {
-			classie.remove(this.ui.player, 'player__element--lp-flip');	
+			classie.remove(this.ui.player, 'player__element--lp-flip');
 		}
 	};
 
@@ -875,9 +875,9 @@
 	 */
 	Turntable.prototype._ctrlVinylFx = function() {
 		var hasFx = classie.has(this.ctrls.vinylFx, 'effects__button--active');
-		
+
 		this.setNoise(!hasFx);
-		
+
 		if( hasFx ) {
 			classie.remove(this.ctrls.vinylFx, 'effects__button--active');
 		}
@@ -917,13 +917,13 @@
 		}
 		this.currentSide = this.currentSide === 1 ? 2 : 1;
 		if( classie.has(this.ui.player, 'player__element--lp-flip') ) {
-			classie.remove(this.ui.player, 'player__element--lp-flip');	
+			classie.remove(this.ui.player, 'player__element--lp-flip');
 		}
 		else {
 			classie.add(this.ui.player, 'player__element--lp-flip');
 		}
 	}
-		
+
 
 	/**
 	 * Record obj.
@@ -997,7 +997,7 @@
 				'center' : { translateX : 0, translateY : 0, opacity : 1 }
 			};
 
-		dynamics.animate(this.cover, transform[direction], { duration : duration, type : type, points : points, complete : function() { 
+		dynamics.animate(this.cover, transform[direction], { duration : duration, type : type, points : points, complete : function() {
 			if( typeof callback === 'function' ) {
 				callback();
 			}
@@ -1040,7 +1040,7 @@
 		this.lpPlayCtrlPath = this.ctrls.play.querySelector('svg.icon--progress > path');
 		this.lpPlayCtrlPathLen = this.lpPlayCtrlPath.getTotalLength();
 		dynamics.css(this.lpPlayCtrlPath, {strokeDasharray : this.lpPlayCtrlPathLen, strokeDashoffset : this.lpPlayCtrlPathLen});
-		
+
 		this._initEvents();
 	}
 
@@ -1115,10 +1115,10 @@
 		this._hidePlayCtrl();
 
 		var currentRecord = this.records[this.current];
-		
+
 		if( direction === 'right' ) {
 			this.current = this.current < this.recordsTotal - 1 ? this.current + 1 : 0;
-		} 
+		}
 		else {
 			this.current = this.current > 0 ? this.current - 1 : this.recordsTotal - 1;
 		}
@@ -1159,7 +1159,7 @@
 	 */
 	RecordSlideshow.prototype._showRecord = function() {
 		var self = this;
-		
+
 		// If the user didn't click play then return.
 		if( !this.isLoading ) {
 			return false;
@@ -1170,7 +1170,7 @@
 			currentRecord.layout('hidden');
 			classie.remove(currentRecord.wrapper, 'single--current');
 		});
-		
+
 		// hide play ctrl
 		this._hidePlayCtrl();
 
@@ -1225,7 +1225,7 @@
 	RecordSlideshow.prototype._hidePlayCtrl = function() {
 		dynamics.css(this.ctrls.play, { opacity : 0 });
 	};
-	
+
 	/* UI */
 
 	// Grid, Single/Slideshow/ Player views.
@@ -1295,7 +1295,7 @@
 					callback();
 				}
 			};
-		
+
 		// Initialize Masonry after all images are loaded.
 		initGridLayout(checkLoaded);
 		// Load the turntable assets (noise and effects sounds).
@@ -1320,7 +1320,7 @@
 	}
 
 	function loadTurntableAssets(callback) {
-		new AbbeyLoad([{ 
+		new AbbeyLoad([{
 			'room1' : 'mp3/room1.mp3',
 			'room2' : 'mp3/room2.mp3',
 			'room3' : 'mp3/room3.mp3',
@@ -1377,11 +1377,11 @@
 
 	function showExpander(position, callback) {
 		dynamics.css(expanderEl, { opacity: 1, left : position.x, top : position.y, backgroundColor : '#F0E48E', scale : 0 });
-		dynamics.animate(expanderEl, { 
-			scale : 1.5, 
-			backgroundColor : '#041122' 
-		}, { 
-			duration : 500, 
+		dynamics.animate(expanderEl, {
+			scale : 1.5,
+			backgroundColor : '#F0E48E'
+		}, {
+			duration : 500,
 			type : dynamics.easeOut,
 			complete : function() {
 				if( typeof callback === 'function' ) {
@@ -1393,10 +1393,10 @@
 
 	function hideExpander() {
 		dynamics.css(expanderEl, { left : window.innerWidth/2, top : window.innerHeight/2 });
-		dynamics.animate(expanderEl, { 
+		dynamics.animate(expanderEl, {
 			opacity : 0
-		}, { 
-			duration : 500, 
+		}, {
+			duration : 500,
 			type : dynamics.easeOut
 		});
 	}
